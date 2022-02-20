@@ -244,6 +244,7 @@ first.addEventListener('dblclick', () => {
 })
 second.addEventListener('dblclick', () => {
     view.classList.remove('viewAdd');  
+    document.getElementById('myImage').src = "images/product1.jpg";
     view.classList.add('active');
 })
 third.addEventListener('dblclick', () => {
