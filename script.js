@@ -6,7 +6,6 @@ let product = {
         kcall: 500,
         img: "images/product2.jpg",
         descr: 'Встречайте простой ГАМБУРГЕР. Он не сочный и не сытный за то дешевый',
-        clas: 'first',
         get Summ() {
             return this.price * this.amount
         },
@@ -21,7 +20,6 @@ let product = {
         kcall: 900,
         img: "images/product1.jpg",
         descr: ' Встречайте Фрешмена FAS FOOD`а. Он набрал в себя всё самое старое.',
-        clas:'second',
         get Summ() {
             return this.price * this.amount
         },
@@ -36,7 +34,6 @@ let product = {
         kcall: 1200,
         img: "images/product3.jpg",
         descr: ' FRESH и Картошка фри. Тот же самый FRESH и Фри объяденились.',
-        clas:'third',
         get Summ() {
             return this.price * this.amount
         },
@@ -73,7 +70,7 @@ function createProduct () {
         let { name: n, price, descr, img, clas } = product[key];
         content +=  `<section class="main__product" id="${key}">
         <div class="main__product-preview">
-            <div class="main__product-info ${clas}">
+            <div class="main__product-info">
                 <img src="${img}" alt="" class="main__product-img">
                 <h2 class="main__product-title">${n}
                     <span class="main__product-many">${price} сум</span>
@@ -231,23 +228,23 @@ addCart.addEventListener('click', function() {
 
 /////////////////дз////////////////
 
-let first = document.querySelector('.first'),
-    second = document.querySelector('.second'),
-    third = document.querySelector('.third'),
-    view = document.querySelector('.view'),
-    viewClose = document.querySelector('.view__close');
+let view = document.querySelector('.view'),
+    viewClose = document.querySelector('.view__close'),
+    mainPp = document.querySelectorAll('.main__product-info');
 
-first.addEventListener('dblclick', () => {
+    
+
+mainPp[0].addEventListener('dblclick', () => {
     view.classList.remove('viewAdd');
     document.getElementById('myImage').src = "images/product2.jpg";
     view.classList.add('active');
 })
-second.addEventListener('dblclick', () => {
+mainPp[1].addEventListener('dblclick', () => {
     view.classList.remove('viewAdd');  
     document.getElementById('myImage').src = "images/product1.jpg";
     view.classList.add('active');
 })
-third.addEventListener('dblclick', () => {
+mainPp[2].addEventListener('dblclick', () => {
     view.classList.remove('viewAdd');
     document.getElementById('myImage').src = "images/product3.jpg";
     view.classList.add('active');
