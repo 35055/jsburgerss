@@ -67,7 +67,7 @@ let content = '';
 function createProduct () {
     let main = document.querySelector('.main');
     for(let key in product) {
-        let { name: n, price, descr, img, clas } = product[key];
+        let { name: n, price, descr, img } = product[key];
         content +=  `<section class="main__product" id="${key}">
         <div class="main__product-preview">
             <div class="main__product-info">
@@ -230,39 +230,30 @@ addCart.addEventListener('click', function() {
 
 let view = document.querySelector('.view'),
     viewClose = document.querySelector('.view__close'),
-    mainPp = document.querySelectorAll('.main__product-info');
+    mainPp = document.querySelectorAll('.main__product-info'),
+    sr = document.querySelector('.sr');
 
+
+for(let i = 0; i < mainPp.length ; i++){
+        mainPp[i].addEventListener('dblclick', () => {
+        view.classList.remove('viewAdd');
+        view.classList.add('active');
+        src(mainPp[i]);
+    })
+}    
+
+function src(item){
+    let parentId = item.closest('.main__product').getAttribute('id');
+    sr.src = product[parentId].img
+}
     
-
-mainPp[0].addEventListener('dblclick', () => {
-    view.classList.remove('viewAdd');
-    document.getElementById('myImage').src = "images/product2.jpg";
-    view.classList.add('active');
-})
-mainPp[1].addEventListener('dblclick', () => {
-    view.classList.remove('viewAdd');  
-    document.getElementById('myImage').src = "images/product1.jpg";
-    view.classList.add('active');
-})
-mainPp[2].addEventListener('dblclick', () => {
-    view.classList.remove('viewAdd');
-    document.getElementById('myImage').src = "images/product3.jpg";
-    view.classList.add('active');
-})
-
-
 viewClose.addEventListener('click', () => {
     view.classList.add('viewAdd');
     view.classList.remove('active');
 })
 
 
-
-
-
-
-
-
+//////////////Конец дз//////////////////
 
 receiptBtn.addEventListener('click', function() {
     location.reload();
